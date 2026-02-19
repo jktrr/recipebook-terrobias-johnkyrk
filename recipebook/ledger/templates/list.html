@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-    <form method="POST">
+    <!-- <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="redirect" value="{{ recipes.0.name }}">
         <input type="submit" name="redirect" value="{{ recipes.1.name }}">
-    </form>
+    </form> -->
+
+    {% for recipe in recipes %}
+    <h4> {{ recipe.name }}</h4>
+
+    {% for ingredient in recipe.ingredients %}
+        {{ ingredient.name }} : {{ ingredient.quantity }}<br>
+    {% endfor %}
+
+    <a href="{{ recipe.link }}">{{ recipe.name }}</a>
+    {% endfor %}
 
 {% endblock %}

@@ -70,14 +70,6 @@ def recipe_list(request):
         ]
     }
 
-    if request.method == "POST":
-        btn = request.POST.get("redirect")
-
-        if btn == "Recipe 1":
-            return redirect('/recipe/1')
-        elif btn == "Recipe 2":
-            return redirect('/recipe/2')
-
     return render(request, 'list.html', ctx)
 
 def index(request, num):
