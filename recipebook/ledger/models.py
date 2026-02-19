@@ -21,6 +21,5 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField()
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="ingredients")
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe")
-
+    ingredients = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="recipe")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")

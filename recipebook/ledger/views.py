@@ -11,5 +11,10 @@ class RecipeListView(ListView):
     template_name = 'list.html'
 
 class RecipeDetailView(DetailView):
-    model = RecipeIngredient
+    model = Recipe
     template_name = 'recipe.html'
+    context_object_name = 'recipe'
+
+    def get_queryset(self):
+        recipes = self.kwargs.get('recipe')
+        return Ingredient.objects.filter(recipe__recipe__name=recipes)

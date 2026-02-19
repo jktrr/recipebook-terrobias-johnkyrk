@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <h4>{{ name }}</h4>
+    <h4>{{ recipe.name }}</h4>
     
-    {% for step in ingredients %}
-    {{ step.name }} : {{ step.quantity }}<br>
+    {% for ingredient in recipe.ingredients.all %}
+    {{ ingredient.ingredient.name }}
     {% endfor %}
 {% endblock %}
