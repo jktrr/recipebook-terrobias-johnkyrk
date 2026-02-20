@@ -2,7 +2,7 @@
 {% block content %}
     <h4>{{ recipe.name }}</h4>
     
-    {% for ingredient in recipe.ingredients.all %}
-    {{ ingredient.ingredient.name }}
+    {% for ingredient in object.ingredients.all %}
+    {{ ingredient.ingredients.name }}
     {% endfor %}
 {% endblock %}

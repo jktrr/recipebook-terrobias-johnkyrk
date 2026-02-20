@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('list', RecipeListView.as_view(), name='recipe_list'),
-    path('<str:recipe>', RecipeDetailView.as_view(), name='recipe_detail'),
+    path('<int:pk>', RecipeDetailView.as_view(), name='recipe_detail'),
     path('', views.default, name='redirect'), # only used to automatically bring the user to the list page upon entering the site
 ]
 
