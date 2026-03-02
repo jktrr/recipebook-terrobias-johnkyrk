@@ -3,7 +3,7 @@ from .models import *
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-def default(request):
+def index(request):
     return redirect('/recipes/list')
 
 class RecipeListView(ListView):

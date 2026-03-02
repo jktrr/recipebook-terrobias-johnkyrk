@@ -5,7 +5,7 @@ from .views import *
 urlpatterns = [
     path('list', RecipeListView.as_view(), name='recipe_list'),
     path('<int:pk>', RecipeDetailView.as_view(), name='recipe_detail'),
-    path('', views.default, name='redirect'), # only used to automatically bring the user to the list page upon entering the site
+    path('', views.index, name='redirect'), # only used to automatically bring the user to the list page upon entering the site
 ]
 
 app_name = 'ledger'
