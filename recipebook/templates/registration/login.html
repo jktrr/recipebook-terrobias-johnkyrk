@@ -1,3 +1,9 @@
+{% include 'base.html' %}
+
+{% block display %}
+    <h2>Login</h2>
+{% endblock %}
+
 <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

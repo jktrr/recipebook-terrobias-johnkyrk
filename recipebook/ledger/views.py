@@ -5,10 +5,7 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
-    return redirect('recipes/login')
-
-def login_page(request):
-    return render(request, "login_page.html")
+    return redirect('/accounts/login/')
 
 
 class RecipeListView(ListView):
