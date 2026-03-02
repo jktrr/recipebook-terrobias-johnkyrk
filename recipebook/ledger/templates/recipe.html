@@ -1,6 +1,13 @@
 {% extends "base.html" %}
+
+{% block display %}
+    <h2>Recipe Details</h2>
+{% endblock %}
+
 {% block content %}
     <h4>{{ recipe.name }}</h4>
+    <p>Created by {{ recipe.profile.username }}<br></p>
+    <p>Created on {{ recipe.created_on|date:"Y-m-d" }} : Modified on {{ recipe.modified_on|date:"Y-m-d" }}</p>
     
     {% for ingredient in object.ingredients.all %}
     {{ ingredient.ingredients.name }}: {{ ingredient.quantity }}

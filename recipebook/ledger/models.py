@@ -10,8 +10,8 @@ class Profile(models.Model):
     bio = models.TextField(validators=[MinLengthValidator(255)])
 
     def __str__(self):
-        return self.user
-    
+         return self.username
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -22,10 +22,11 @@ class Ingredient(models.Model):
     def get_absolute_url(self):
             return reverse('ledger:recipe_detail', args=[str(self.id)])    
     
+
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, 
-                                related_name='task_list', null=True, blank=True)
+                                related_name="author", null=True, blank=True)
     # created_on = models.DateTimeField(auto_now_add=True)
     # updated_on = models.DateTimeField(auto_now=True)
 
@@ -34,6 +35,7 @@ class Recipe(models.Model):
     
     def get_absolute_url(self):
         return reverse('ledger:recipe_list', args=[str(self.id)])
+
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)

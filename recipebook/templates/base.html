@@ -6,6 +6,8 @@
 </html>
 
 <body>
+    <header><h1>Recipe Book</h1></header>
+
     {% block header %}
         {% if user.is_authenticated %}
             {% include 'registration/logout.html' %}
@@ -14,7 +16,8 @@
         {% endif %}
     {% endblock %}
 
-    <header><h1>Recipe Book</h1></header>
+    {% block display %}
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
