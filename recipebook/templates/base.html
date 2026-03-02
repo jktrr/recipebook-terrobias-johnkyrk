@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipe Book</title>
+    </head>
+</html>
+
+<body>
+    {% block header %}
+        {% if user.is_authenticated %}
+            {% include 'registration/logout.html' %}
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    {% endblock %}
+
+    <header><h1>Recipe Book</h1></header>
+
+    {% block content %}
+    {% endblock %}
+</body>
