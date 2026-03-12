@@ -10,7 +10,7 @@ class Profile(models.Model):
     bio = models.TextField(validators=[MinLengthValidator(255)])
 
     def __str__(self):
-         return self.username
+        return self.username
 
 
 class Ingredient(models.Model):
@@ -20,24 +20,26 @@ class Ingredient(models.Model):
         return self.name
 
     def get_absolute_url(self):
-            return reverse('ledger:recipe_detail', args=[str(self.id)])    
-    
+        return reverse('ledger:recipe_detail', args=[str(self.id)])
+
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, 
-                                related_name="author", null=True, blank=True)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="recipes", null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
         return reverse('ledger:recipe_list', args=[str(self.id)])
 
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
-    ingredients = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="recipe")
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
+    ingredients = models.ForeignKey(
+        Ingredient, on_delete=models.CASCADE, related_name="recipe")
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name="ingredients")

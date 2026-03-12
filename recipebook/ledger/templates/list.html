@@ -6,6 +6,6 @@
 
 {% block content %}
     {% for recipe in object_list %}
-    <a href="/recipes/{{ recipe.pk }}"><br>{{ recipe.name }}</a>
+    <a href="/recipe/{{ recipe.pk }}"><br>{{ recipe.name }}</a>
     {% endfor %}
 {% endblock %}
