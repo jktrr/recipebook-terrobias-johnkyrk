@@ -5,11 +5,17 @@
 {% endblock %}
 
 {% block content %}
+    {% for image in recipe.image.all %}
+    <img src="{{ image.image.url }}" alt="{{ image.description }}">
+    {% endfor %}
+
     <h4>{{ recipe.name }}</h4>
     <p>Created by {{ recipe.profile.username }}<br></p>
     <p>Created on {{ recipe.created_on|date:"Y-m-d" }} : Modified on {{ recipe.modified_on|date:"Y-m-d" }}</p>
     
+    <ul>
     {% for ingredient in object.ingredients.all %}
-    {{ ingredient.ingredients.name }}: {{ ingredient.quantity }}
+    <li>{{ ingredient.ingredients.name }}: {{ ingredient.quantity }}</li>
     {% endfor %}
+    </ul>
 {% endblock %}

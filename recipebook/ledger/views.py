@@ -18,3 +18,7 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipe.html'
     redirect_field_name = ''
+
+
+# class RecipeAddView(LoginRequiredMixin, ListView):
+#     model = Recipe
