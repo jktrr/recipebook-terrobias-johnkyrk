@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<ul>
     {% for recipe in object_list %}
-    <a href="/recipe/{{ recipe.pk }}"><br>{{ recipe.name }}</a>
+    <li><a href="/recipe/{{ recipe.pk }}">{{ recipe.name }}</a></li>
     {% endfor %}
+</ul>
 
-    <!-- <a href="recipe/add"><br>Add Recipe</a> -->
+    <a href="{% url 'ledger:recipe_add' %}"><br>Add Recipe</a>
 {% endblock %}

@@ -1,0 +1,12 @@
+<header><h1>Recipe Book</h1></header>
+<h2>New Recipe</h2>
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <br><a href="{% url 'ledger:recipe_list' %}">Back to List</a>
+{% endblock %}
