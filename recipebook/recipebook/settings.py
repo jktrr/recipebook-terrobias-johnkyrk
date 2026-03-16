@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-s)utp3)r+)0o28wp^v*kd4g6(5^5ue796xd_(1+q%box8y-hx*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGIN = [
+    "https://*.railway.app"
+]
 
 
 # Application definition
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,7 +82,11 @@ WSGI_APPLICATION = 'recipebook.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.environ["PGNAME"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
     }
 }
 
@@ -117,8 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [BASE_DIR/'static',]
-# STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
